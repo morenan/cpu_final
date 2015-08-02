@@ -1,0 +1,767 @@
+m255
+K3
+13
+cModel Technology
+dC:\modeltech64_10.1c\win64
+T_opt
+VKcn`mDSz4:FBV_7KMSCJn2
+04 11 16 work cpu_core_tb cpu_core_tb_arch 1
+=1-000c29bd805f-55b57d72-29b-27bc
+o-quiet -auto_acc_if_foreign -work work
+n@_opt
+OL;O;10.1c;51
+Ealu
+Z0 w1437938488
+Z1 DPx4 work 10 com_define 0 22 K]2`SYi8F?POB4^cdQKWe3
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z4 DPx4 ieee 16 std_logic_signed 0 22 E>OLoMaBGQ?hbGgOoNXM^1
+Z5 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z6 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z7 dC:\Users\nancy\Xilinx\workspace\cpu_final
+Z8 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd
+Z9 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd
+l0
+L7
+V4o>W]S^Zeb1N@mC?3Q;Nl0
+Z10 OL;C;10.1c;51
+32
+Z11 !s108 1437952511.836000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd|
+Z13 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd|
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1
+!s100 a[_U8MH7dCQD4f@HXXSd`3
+!i10b 1
+Abhv
+R1
+R2
+R3
+R4
+R5
+R6
+DEx4 work 3 alu 0 22 4o>W]S^Zeb1N@mC?3Q;Nl0
+l24
+L19
+V?c;bMkd]ZjNG:H=:l_EBd2
+R10
+32
+R11
+R12
+R13
+R14
+R15
+!s100 ?3o;69`><]66k:d`I>^eT0
+!i10b 1
+vasync_receiver
+IA?cbZ@HDEkcb2m6ogNfd^1
+V<bAjnLmL9e2PFCNJe1LP`2
+R7
+Z16 w1425223118
+Z17 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v
+Z18 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v
+L0 74
+Z19 OL;L;10.1c;51
+r1
+31
+Z20 !s108 1437952511.491000
+Z21 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v|
+Z22 !s90 -reportprogress|300|-work|work|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v|
+Z23 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!i10b 1
+!s100 0F_lEJj`E1mdPOl@:VAG11
+!s85 0
+vasync_transmitter
+I0V93];;8[Tgf:gH02NTWE0
+VDJnF6j3@LTEzkJ`;M;iG12
+R7
+R16
+R17
+R18
+L0 13
+R19
+r1
+31
+R20
+R21
+R22
+R23
+!i10b 1
+!s100 YYS_LHcXTff0``:[6Pi[?0
+!s85 0
+vBaudTickGen
+IgW3^@:RKaKOh0aOeZ@Nm<1
+V>Z<cobGnIJNi7=VW:D>1=2
+R7
+R16
+R17
+R18
+L0 176
+R19
+r1
+31
+R20
+R21
+R22
+R23
+n@baud@tick@gen
+!i10b 1
+!s100 iK=QkW736:aP<V6gF8:I73
+!s85 0
+Pcom_define
+R5
+R6
+Z24 w1437929668
+R7
+Z25 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd
+Z26 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd
+l0
+L13
+VK]2`SYi8F?POB4^cdQKWe3
+R10
+32
+Z27 !s108 1437952512.161000
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd|
+Z29 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd|
+R14
+R15
+!s100 6`E3I3mAWi@Y>lOc:35O[0
+!i10b 1
+Bbody
+R1
+R5
+R6
+l0
+L166
+Vjb9<BoOOj?>8OYz^aRgbe3
+R10
+32
+R27
+R28
+R29
+R14
+R15
+nbody
+!s100 1?:_oX<11d_aQfz5`5FLO2
+!i10b 1
+Ecpu_core
+Z30 w1437948041
+R1
+Z31 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+R3
+R5
+R6
+R7
+Z32 8C:\Users\nancy\Xilinx\workspace\cpu_sim\remote_sources\_\cpu_core.vhd
+Z33 FC:\Users\nancy\Xilinx\workspace\cpu_sim\remote_sources\_\cpu_core.vhd
+l0
+L7
+VKdK_X`IBL98UnjRLP0f[M3
+R10
+32
+Z34 !s108 1437952512.481000
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:\Users\nancy\Xilinx\workspace\cpu_sim\remote_sources\_\cpu_core.vhd|
+Z36 !s107 C:\Users\nancy\Xilinx\workspace\cpu_sim\remote_sources\_\cpu_core.vhd|
+R14
+R15
+!s100 7QGLPjAE6S`[V[<THLjQj0
+!i10b 1
+Abhv
+R1
+R31
+R3
+R5
+R6
+DEx4 work 8 cpu_core 0 22 KdK_X`IBL98UnjRLP0f[M3
+l647
+L53
+VXDNj];o8FDoNlboKhJkl[1
+R10
+32
+R34
+R35
+R36
+R14
+R15
+!s100 ?^g60`>5bFPjEk4DjDkfG1
+!i10b 1
+Ecpu_core_tb
+Z37 w1437957455
+R1
+R31
+R3
+R5
+R6
+R7
+Z38 8C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd
+Z39 FC:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd
+l0
+L7
+VleS`Ge<H01Z?L10:SSF0X3
+R10
+32
+Z40 !s108 1437957463.604000
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd|
+Z42 !s107 C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd|
+R14
+R15
+!s100 S72VTIeA0aCTQ[^lbVeTe3
+!i10b 1
+Acpu_core_tb_arch
+R1
+R31
+R3
+R5
+R6
+DEx4 work 11 cpu_core_tb 0 22 leS`Ge<H01Z?L10:SSF0X3
+l78
+L10
+VF??`@m3UDRk3^n3fM?4d02
+R10
+32
+R40
+R41
+R42
+R14
+R15
+!s100 YWcRAGbebCJd^E[e^FZYX3
+!i10b 1
+Eexception
+Z43 w1437938719
+R1
+R3
+R31
+R5
+R6
+R7
+Z44 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd
+Z45 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd
+l0
+L6
+Ve?Q426GEjJ2QQ;e8D[6Ie0
+R10
+32
+Z46 !s108 1437952512.817000
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd|
+Z48 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd|
+R14
+R15
+!s100 4MBTT7e;L0fOj3gV4F3YB3
+!i10b 1
+Abhv
+R1
+R3
+R31
+R5
+R6
+DEx4 work 9 exception 0 22 e?Q426GEjJ2QQ;e8D[6Ie0
+l104
+L77
+VRe20:bV;bmN:C@i6?;fjB1
+R10
+32
+R46
+R47
+R48
+R14
+R15
+!s100 <d;h<RCL`hF:8a<i^VhGZ2
+!i10b 1
+Eflash
+Z49 w1437697037
+R5
+R6
+R7
+Z50 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd
+Z51 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd
+l0
+L5
+V;dYaVI7RUK1P[@I7WVRIO1
+R10
+32
+Z52 !s108 1437952513.153000
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd|
+Z54 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd|
+R14
+R15
+!s100 T48IM=XRd4GFUIcZ^T;NY3
+!i10b 1
+Abehavioral
+R5
+R6
+DEx4 work 5 flash 0 22 ;dYaVI7RUK1P[@I7WVRIO1
+l30
+L28
+VkWk3PF4n6[6@29;ffUVVn2
+R10
+32
+R52
+R53
+R54
+R14
+R15
+!s100 RQ4GGM8Yc]b`2=]a68AhH2
+!i10b 1
+Eflow_exe
+Z55 w1437936162
+R1
+R3
+R4
+R5
+R6
+R7
+Z56 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd
+Z57 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd
+l0
+L6
+VKQ:9HgZ[?g`nGMnmRB]`V2
+R10
+32
+Z58 !s108 1437952513.467000
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd|
+Z60 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd|
+R14
+R15
+!s100 O:K0?DHzlkG^eM3;V[3W93
+!i10b 1
+Abhv
+R1
+R3
+R4
+R5
+R6
+DEx4 work 8 flow_exe 0 22 KQ:9HgZ[?g`nGMnmRB]`V2
+l88
+L68
+VoRFzeiImB]`YmDoJZEURC3
+R10
+32
+R58
+R59
+R60
+R14
+R15
+!s100 HaJD;k:]>:PzlMK`=aCK^3
+!i10b 1
+Eflow_id
+Z61 w1437938555
+Z62 DPx4 work 13 idecode_const 0 22 3P_MVXVNIMUf4a2_Dke0E2
+R1
+R3
+R4
+R5
+R6
+R7
+Z63 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd
+Z64 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd
+l0
+L7
+ViM?<?D;_O]M18JIPo_Az_3
+R10
+32
+Z65 !s108 1437952513.795000
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd|
+Z67 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd|
+R14
+R15
+!s100 S_:2Uh9lRHSG?86iM28FJ1
+!i10b 1
+Abhv
+R62
+R1
+R3
+R4
+R5
+R6
+DEx4 work 7 flow_id 0 22 iM?<?D;_O]M18JIPo_Az_3
+l93
+L65
+V69>5AUEgd4zg1>TazaUOB3
+R10
+32
+R65
+R66
+R67
+R14
+R15
+!s100 59lPeNgkde2PaSQA5RXRT3
+!i10b 1
+Eflow_if
+Z68 w1437897254
+R1
+R3
+R4
+R5
+R6
+R7
+Z69 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd
+Z70 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd
+l0
+L6
+V<H6Ei7T5eCVUWEkLYoebj1
+R10
+32
+Z71 !s108 1437952514.136000
+Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd|
+Z73 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd|
+R14
+R15
+!s100 =hOGo@]J;HbHgI7`b0zL^1
+!i10b 1
+Abhv
+R1
+R3
+R4
+R5
+R6
+DEx4 work 7 flow_if 0 22 <H6Ei7T5eCVUWEkLYoebj1
+l31
+L27
+Vba?IZ5SaHE>Y54OWC3`=M2
+R10
+32
+R71
+R72
+R73
+R14
+R15
+!s100 R_K=?70Mhm35=JFSaL6i>0
+!i10b 1
+Eflow_mem
+Z74 w1437936385
+R1
+R3
+R4
+R5
+R6
+R7
+Z75 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd
+Z76 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd
+l0
+L6
+VfPR`DZDX;e>nDTZA4chM20
+R10
+32
+Z77 !s108 1437952514.536000
+Z78 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd|
+Z79 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd|
+R14
+R15
+!s100 oimc9BoIX9>fZkFcmZc9a3
+!i10b 1
+Abhv
+R1
+R3
+R4
+R5
+R6
+DEx4 work 8 flow_mem 0 22 fPR`DZDX;e>nDTZA4chM20
+l72
+L51
+VQ>gj@:CaLnk<m7DS7OiEU1
+R10
+32
+R77
+R78
+R79
+R14
+R15
+!s100 3mj7ZeQ=Bm6N;>`8J[jD?0
+!i10b 1
+Eflow_wb
+Z80 w1437892528
+R1
+R3
+R4
+R5
+R6
+R7
+Z81 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd
+Z82 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd
+l0
+L6
+VoBHzLLAcLh=6:GR?4amke1
+R10
+32
+Z83 !s108 1437952514.998000
+Z84 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd|
+Z85 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd|
+R14
+R15
+!s100 K79SL?OOoHlcja^4NUZ<A1
+!i10b 1
+Abhv
+R1
+R3
+R4
+R5
+R6
+DEx4 work 7 flow_wb 0 22 oBHzLLAcLh=6:GR?4amke1
+l33
+L29
+Vo[b5b9LaVU4K<C<7o^PNN0
+R10
+32
+R83
+R84
+R85
+R14
+R15
+!s100 :me[d?V7A@eH49H^TooSg2
+!i10b 1
+Pidecode_const
+R5
+R6
+Z86 w1437897580
+R7
+Z87 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd
+Z88 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd
+l0
+L13
+V3P_MVXVNIMUf4a2_Dke0E2
+R10
+32
+Z89 !s108 1437952515.494000
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd|
+Z91 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd|
+R14
+R15
+!s100 Y_XBlgY>c1RT2SZL1F2JR1
+!i10b 1
+Bbody
+R62
+R5
+R6
+l0
+L100
+VDhZRoN2FONC7[;HhMFcZB1
+R10
+32
+R89
+R90
+R91
+R14
+R15
+nbody
+!s100 j@4gaWKO3IO>hFO3SS1A@1
+!i10b 1
+Emmu
+Z92 w1437892305
+R1
+R31
+R2
+R3
+R5
+R6
+R7
+Z93 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd
+Z94 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd
+l0
+L8
+Vi<jed@zDmFh8UGGm@;5z92
+R10
+32
+Z95 !s108 1437952515.872000
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd|
+Z97 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd|
+R14
+R15
+!s100 8M`9F^K5XODjnQIeSEdUK2
+!i10b 1
+Abhv
+R1
+R31
+R2
+R3
+R5
+R6
+DEx4 work 3 mmu 0 22 i<jed@zDmFh8UGGm@;5z92
+l93
+L49
+VPGfbUC@8aPko34T<8N2Fm1
+R10
+32
+R95
+R96
+R97
+R14
+R15
+!s100 >UTWA]dO9ZgPIPed9zZQk2
+!i10b 1
+Ephy_mem
+Z98 w1437891943
+Z99 DPx4 work 3 rom 0 22 C5m>`aOAOKz5O^>:mDG0E2
+R1
+R2
+R5
+R6
+R7
+Z100 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd
+Z101 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd
+l0
+L7
+VJC>`G@0FKHGZMITh7?zP83
+R10
+32
+Z102 !s108 1437952516.348000
+Z103 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd|
+Z104 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd|
+R14
+R15
+!s100 _diQLS[<g`A`:nl_jHk]@1
+!i10b 1
+Abehavioral
+R99
+R1
+R2
+R5
+R6
+DEx4 work 7 phy_mem 0 22 JC>`G@0FKHGZMITh7?zP83
+l89
+L50
+V>N3:HR:?4Da52]F41YKEe3
+R10
+32
+R102
+R103
+R104
+R14
+R15
+!s100 8RB<<li=Wlk=VeUE=e>RH3
+!i10b 1
+Eram
+Z105 w1437696779
+R5
+R6
+R7
+Z106 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd
+Z107 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd
+l0
+L6
+V=K::AK[[PQXh]Q<DJPV8g2
+R10
+32
+Z108 !s108 1437952516.894000
+Z109 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd|
+Z110 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd|
+R14
+R15
+!s100 [kD5]bOCPbRcI4>6TC[X31
+!i10b 1
+Abehavioral
+R5
+R6
+DEx4 work 3 ram 0 22 =K::AK[[PQXh]Q<DJPV8g2
+l38
+L32
+V<50HYL_]cdejj0=@LQi=T0
+R10
+32
+R108
+R109
+R110
+R14
+R15
+!s100 ajA0Cd9gh?Xa7G0b0`YIC3
+!i10b 1
+Ereg_com
+Z111 w1437891808
+R1
+R3
+R4
+R5
+R6
+R7
+Z112 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd
+Z113 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd
+l0
+L6
+V@QgCVi62EP4;O@7i=[KHX2
+R10
+32
+Z114 !s108 1437952517.320000
+Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd|
+Z116 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd|
+R14
+R15
+!s100 [1j;To`^SCFhRR=F@ZdX>0
+!i10b 1
+Abhv
+R1
+R3
+R4
+R5
+R6
+DEx4 work 7 reg_com 0 22 @QgCVi62EP4;O@7i=[KHX2
+l35
+L29
+V6VWa0OPL;8EdZ:NnJ<hA:1
+R10
+32
+R114
+R115
+R116
+R14
+R15
+!s100 o0b0S`CDdDDhHnTCMc@8o2
+!i10b 1
+Ereg_cp0
+Z117 w1437891588
+R1
+R3
+R31
+R5
+R6
+R7
+Z118 8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd
+Z119 FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd
+l0
+L7
+V9UDhbY3TFX<I@h8QjXla<2
+R10
+32
+Z120 !s108 1437952517.724000
+Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd|
+Z122 !s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd|
+R14
+R15
+!s100 <O3WK4D1>U]d16lSL0B:R3
+!i10b 1
+Abhv
+R1
+R3
+R31
+R5
+R6
+DEx4 work 7 reg_cp0 0 22 9UDhbY3TFX<I@h8QjXla<2
+l52
+L45
+V>1UhVG6IB5oPkf;o]]8:A3
+R10
+32
+R120
+R121
+R122
+R14
+R15
+!s100 ^g=;LZhe1ATBMFd:K5F<j2
+!i10b 1
+Prom
+R5
+R6
+w1437696807
+R7
+8C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd
+FC:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd
+l0
+L4
+VC5m>`aOAOKz5O^>:mDG0E2
+R10
+32
+R14
+R15
+!s100 OcbBN0f=`b@OAnWHWmIP^0
+!i10b 1
+!s108 1437952518.102000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd|
+!s107 C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd|

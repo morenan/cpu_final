@@ -1,0 +1,495 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use work.com_define.all;
+
+entity Exception is
+	port(
+		clk, rst : in std_logic;
+		status : in INT3;
+		
+		-- pause
+		pause_if_out, pause_id_out, pause_exe_out, pause_mem_out, pause_wb_out : out std_logic;
+		-- clear
+		clear_if_out, clear_id_out, clear_exe_out, clear_mem_out, clear_wb_out : out std_logic;
+		
+		-- data
+		in_if_addr : in INT32;
+		out_if_inst : out INT32;
+		out_if_ready : out std_logic;
+		in_mem_wen, in_mem_ren : in std_logic;
+		in_mem_addr : in INT32;
+		in_mem_data : in INT32;
+		out_mem_data : out INT32;
+		out_mem_ready : out std_logic;
+		in_mem_tlb_en : in std_logic;
+        in_mem_tlb_struct : in TLB_STRUCT;
+        in_mem_align_type : in ALIGN_TYPE;
+	
+		-- exception
+		in_clock_int : in std_logic;
+		out_clock_init : out std_logic;
+		out_clock_pause : out std_logic;
+		in_exc_code_id : in INT2;
+		
+		-- pc
+		in_pc_if, in_pc_id, in_pc_mem : INT32;
+		
+		-- branch & jump & eret
+		in_branch_en : in std_logic;
+		in_branch_wait : in std_logic;
+		in_jump_en : in std_logic;
+		in_jump_pc : in INT32;
+		out_jump_pc : out INT32;
+		out_pc_sel : out PC_SELECT;
+		in_eret_en : in std_logic;
+		in_epc_en : in std_logic;
+		
+		-- with cp0
+		eret_en : out std_logic;
+		out_int_start : out std_logic;
+		out_cause : out INT5;
+		out_bad_v_addr : out INT32;
+		in_int_code : in INT6;
+		out_int_code : out INT6;
+		in_entry_hi : in INT20;
+		out_entry_hi : out INT20;
+		out_epc_en : out std_logic;
+		out_epc : out INT32;
+		
+		-- with mmu
+		vir_use_status : out std_logic; -- 0:if,  1:mem
+		vir_addr : out INT32 ;
+		vir_data_in : out INT32 ;
+		vir_data_out : in INT32 ;
+		vir_align_type : out ALIGN_TYPE ;
+		vir_ren : out std_logic ;
+		vir_wen : out std_logic ;
+		vir_ready : in std_logic ;
+		tlb_write_en : out std_logic ;
+        tlb_write_struct : out TLB_STRUCT ;
+        vir_serial_int : in std_logic ;
+	    vir_exc_code : in INT3
+	
+		);
+end Exception;
+
+architecture bhv of Exception is
+
+-- status
+type MMU_STATUS is (NORMAL, MEM_USED, IF_USED, MEM_USED_READ, MEM_USED_WRITE_BYTE);
+type INT_STATUS is (NORMAL, 
+	INT_IF, INT_ID, INT_EXE, INT_MEM, INT_WB,
+	ERET_ID, ERET_EXE, ERET_MEM, ERET_WB,
+	JUMP_ID, JUMP_EXE, JUMP_MEM, JUMP_WB,
+	BRANCH_IF, BRANCH_WAIT);
+signal s_mmu_status : MMU_STATUS;
+signal s_int_status : INT_STATUS;
+-- pause & clear
+signal s_pause_if, s_pause_id, s_pause_exe, s_pause_mem, s_pause_wb : std_logic ;
+signal s_clear_if, s_clear_id, s_clear_exe, s_clear_mem, s_clear_wb : std_logic ;
+-- interruption
+signal s_int_if, s_int_id, s_int_exe, s_int_mem, s_int_wb : std_logic;
+signal s_cause : INT5;
+signal s_int_start : std_logic;
+signal s_int_code : INT6;
+signal s_entry_hi : INT20;
+signal s_epc : INT32;
+signal s_epc_en : std_logic;
+signal s_compare_recover : std_logic;
+signal s_bad_v_addr : INT32;
+-- jump pc
+signal s_jump_pc : INT32;
+
+begin
+	-- pc sel
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			out_pc_sel <= PC_SELECT_DISABLE;
+		elsif clk'event and clk = '1' and status = "110" then
+			if s_int_status = INT_WB then
+				out_pc_sel <= PC_SELECT_EXC;
+			elsif s_int_status = ERET_WB then
+				out_pc_sel <= PC_SELECT_ERET;
+			elsif s_int_status = JUMP_WB then
+				out_pc_sel <= PC_SELECT_JUMP;
+			elsif in_branch_en = '1' then
+				out_pc_sel <= PC_SELECT_BRANCH;
+			else
+				out_pc_sel <= PC_SELECT_NPC;
+			end if;
+			out_jump_pc <= s_jump_pc;
+		end if;
+	end process;
+	
+	-- interruption
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			s_int_status <= NORMAL;
+			s_cause <= "00000";
+			s_int_code <= "000000";
+			s_epc <= (others => '0');
+			s_int_start <= '0';
+			s_bad_v_addr <= (others => '0');
+			s_entry_hi <= (others => '0');
+		elsif clk'event and clk = '1' then
+			-- generate
+			if status = "110" then
+				if (vir_exc_code(0) = '1' or vir_exc_code(1) = '1' or vir_exc_code(2) = '1' or vir_serial_int = '1') and 
+				(s_mmu_status = MEM_USED or s_mmu_status = MEM_USED_READ or s_mmu_status = MEM_USED_WRITE_BYTE) then
+					s_compare_recover <= '1';
+					s_int_status <= INT_MEM;
+					if vir_serial_int = '1' then
+						s_cause <= "00000";
+						s_int_code <= "000001";
+						s_epc <= in_pc_mem+4;
+					else
+						s_cause <= "00001";
+						s_int_code <= in_int_code;
+						s_epc <= in_pc_mem;
+					end if;
+					s_int_start <= '1';
+					s_bad_v_addr <= in_mem_addr;
+					if vir_exc_code = "010" or vir_exc_code = "011" then
+						s_entry_hi <= in_mem_addr(31 downto 12);
+					else
+						s_entry_hi <= in_entry_hi;
+					end if;
+				elsif in_exc_code_id(0) = '1' or in_exc_code_id(1) = '1' then
+					s_compare_recover <= '1';
+					s_int_status <= INT_ID;
+					if in_exc_code_id = "01" then
+						s_int_code <= in_int_code;
+						s_cause <= "01000";
+						s_epc <= in_pc_id;
+					elsif in_exc_code_id = "10" then
+						s_int_code <= in_int_code;
+						s_cause <= "01010";
+						s_epc <= in_pc_id;
+					end if;
+					s_int_start <= '1';
+					s_bad_v_addr <= in_pc_id;
+					s_entry_hi <= in_entry_hi;
+				elsif vir_exc_code(0) = '1' or vir_exc_code(1) = '1' or vir_exc_code(2) = '1' or vir_serial_int = '1' then
+					s_compare_recover <= '1';
+					s_int_status <= INT_IF;
+					if vir_serial_int = '1' then
+						s_cause <= "00000";
+						s_int_code <= "000001";
+						s_epc <= in_if_addr;
+					else
+						s_cause <= "00001";
+						s_int_code <= in_int_code;
+						s_epc <= in_pc_if;
+					end if;
+					s_int_start <= '1';
+					s_bad_v_addr <= in_mem_addr;
+					if vir_exc_code = "010" or vir_exc_code = "011" then
+						s_entry_hi <= in_mem_addr(31 downto 12);
+					else
+						s_entry_hi <= in_entry_hi;
+					end if;
+				elsif in_clock_int = '1' then
+					s_compare_recover <= '1';
+					s_int_status <= INT_IF;
+					s_cause <= "00000";
+					s_int_code <= "100000";
+					s_int_start <= '1';
+					s_entry_hi <= in_entry_hi;
+					s_epc <= in_if_addr;
+					s_bad_v_addr <= in_pc_if;
+				elsif s_int_status = NORMAL then
+					s_compare_recover <= '0';
+					s_cause <= "00000";
+					s_int_code <= "000000";
+					s_int_start <= '0';
+					s_bad_v_addr <= (others => '0');
+					s_entry_hi <= (others => '0');
+					if in_jump_en = '1' then
+						s_int_status <= JUMP_ID;
+						s_jump_pc <= in_jump_pc;
+						s_epc_en <= in_epc_en;
+						s_epc <= in_pc_id+4;
+					elsif in_eret_en = '1' then
+						s_int_status <= ERET_ID;
+					elsif in_branch_en = '1' then
+						s_int_status <= BRANCH_IF;
+					elsif in_branch_wait = '1' then
+						s_int_status <= BRANCH_WAIT;
+					end if;
+				end if;
+			-- flow to next
+			elsif status = "000" then
+				case s_int_status is
+					when NORMAL =>  s_int_status <= NORMAL;
+					when INT_IF =>  s_int_status <= INT_ID;
+					when INT_ID =>  s_int_status <= INT_EXE;
+					when INT_EXE => s_int_status <= INT_MEM;
+					when INT_MEM => s_int_status <= INT_WB;
+					when INT_WB =>  s_int_status <= NORMAL;
+					when ERET_ID => s_int_status <= ERET_EXE;
+					when ERET_EXE=> s_int_status <= ERET_MEM;
+					when ERET_MEM=> s_int_status <= ERET_WB;
+					when ERET_WB => s_int_status <= NORMAL;
+					when JUMP_ID => s_int_status <= JUMP_EXE;
+					when JUMP_EXE=> s_int_status <= JUMP_MEM;
+					when JUMP_MEM=> s_int_status <= JUMP_WB;
+					when JUMP_WB => s_int_status <= NORMAL;
+					when BRANCH_IF => s_int_status <= NORMAL;
+					when BRANCH_WAIT => s_int_status <= NORMAL;
+					when others =>  s_int_status <= NORMAL;
+				end case;
+			end if;
+		end if;
+	end process;
+	
+	-- interruption
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			s_int_if <= '0';
+			s_int_id <= '0';
+			s_int_exe <= '0';
+			s_int_mem <= '0';
+			s_int_wb <= '0';
+		elsif clk'event and clk = '1' then
+			-- generate
+			if status = "110" then
+				if ((s_mmu_status = NORMAL or s_mmu_status = IF_USED) 
+				and (vir_exc_code(0) = '1' or vir_exc_code(1) = '1' or vir_exc_code(2) = '1' or vir_serial_int = '1')) then
+					s_int_if <= '1';
+				elsif in_clock_int = '1' then
+					s_int_if <= '1';
+				end if;
+				if in_exc_code_id(0) = '1' or in_exc_code_id(1) = '1' then
+					s_int_id <= '1';
+				elsif in_jump_en = '1' then
+					s_int_id <= '1';
+				elsif in_eret_en = '1' then
+					s_int_id <= '1';
+				end if;
+				if ((s_mmu_status = MEM_USED or s_mmu_status = MEM_USED_READ or s_mmu_status = MEM_USED_WRITE_BYTE) 
+				and (vir_exc_code(0) = '1' or vir_exc_code(1) = '1' or vir_exc_code(2) = '1' or vir_serial_int = '1')) then
+					s_int_mem <= '1';
+				end if;
+			-- flow to next
+			elsif status = "000" then
+				s_int_if <= '0';
+				s_int_id <= s_int_if;
+				s_int_exe <= s_int_id;
+				s_int_mem <= s_int_exe;
+				s_int_wb <= s_int_mem;
+			end if;
+		end if;
+	end process;
+	
+	-- pause & clear
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			-- pause
+			s_pause_if <= '0';
+			s_pause_id <= '0';
+			s_pause_exe <= '0';
+			s_pause_mem <= '0';
+			s_pause_wb <= '0';
+			-- clear
+			s_clear_if <= '0';
+			s_clear_id <= '0';
+			s_clear_exe <= '0';
+			s_clear_mem <= '0';
+			s_clear_wb <= '0';
+		elsif clk'event and clk = '1' and status = "111" then
+			-- pause
+			if ((s_mmu_status = NORMAL or s_mmu_status = IF_USED) and vir_ready = '0') then
+				s_pause_if <= '1';
+			else
+				s_pause_if <= '0';
+			end if;
+			if in_branch_wait = '1' then
+				s_pause_id <= '1';
+			else
+				s_pause_id <= '0';
+			end if;
+			s_pause_exe <= '0';
+			if ((s_mmu_status = MEM_USED or s_mmu_status = MEM_USED_READ or s_mmu_status = MEM_USED_WRITE_BYTE) and vir_ready = '0') then
+				s_pause_mem <= '1';
+			elsif s_mmu_status = IF_USED then
+				s_pause_mem <= '1';
+			else
+				s_pause_mem <= '0';
+			end if;
+			s_pause_wb <= '0';
+			-- clear
+			s_clear_if <= s_int_if or s_int_id or s_int_exe or s_int_mem or s_int_wb;
+			if in_branch_en = '1' then
+				s_clear_id <= '1';
+			else
+				s_clear_id <= s_int_id or s_int_exe or s_int_mem or s_int_wb;
+			end if;
+			s_clear_exe <= s_int_exe or s_int_mem or s_int_wb;
+			s_clear_mem <= s_int_mem or s_int_wb;
+			s_clear_wb <= s_int_wb;		
+		end if; 
+	end process;
+	-- pause & clear out
+	-- pause
+	pause_if_out <= s_pause_if or s_pause_id or s_pause_exe or s_pause_mem or s_pause_wb;
+	pause_id_out <= s_pause_id or s_pause_exe or s_pause_mem or s_pause_wb;
+	pause_exe_out <= s_pause_exe or s_pause_mem or s_pause_wb;
+	pause_mem_out <= s_pause_mem or s_pause_wb;
+	pause_wb_out <= s_pause_wb;
+	-- clear
+	clear_if_out <= s_clear_if ;
+	clear_id_out <= s_clear_id or (s_pause_if and (not s_pause_id) and (not s_pause_exe) and (not s_pause_mem) and (not s_pause_wb));
+	clear_exe_out <= s_clear_exe or (s_pause_id and (not s_pause_exe) and (not s_pause_mem) and (not s_pause_wb));
+	clear_mem_out <= s_clear_mem or (s_pause_exe and (not s_pause_mem) and (not s_pause_wb));
+	clear_wb_out <= s_clear_wb or (s_pause_mem and (not s_pause_wb));
+	
+	-- mmu in
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			tlb_write_en <= '0';
+			vir_wen <= '0';
+			vir_ren <= '0';
+		elsif clk'event and clk = '1' and status = "111" then
+			-- tlb
+    		tlb_write_en <= in_mem_tlb_en;
+			tlb_write_struct <= in_mem_tlb_struct;
+			-- data
+			if s_mmu_status = NORMAL or s_mmu_status = IF_USED then
+				vir_use_status <= '0';
+				vir_addr <= in_if_addr;
+				vir_wen <= '0';
+				vir_ren <= '1';
+				vir_align_type <= ALIGN_QUAD;	
+			elsif s_mmu_status = MEM_USED_READ then
+				vir_use_status <= '1';
+				vir_addr <= in_mem_addr;
+				vir_wen <= '0';
+				vir_ren <= '1';
+				vir_align_type <= in_mem_align_type;
+			elsif s_mmu_status = MEM_USED_WRITE_BYTE then
+				vir_use_status <= '1';
+				vir_addr <= in_mem_addr;
+				with in_mem_addr(1 downto 0) select
+					vir_data_out <= vir_data_in(31 downto 8) & in_mem_data(7 downto 0) 								when "00",
+									vir_data_in(31 downto 16) & in_mem_data(7 downto 0) & vir_data_in(7 downto 0) 	when "01",
+									vir_data_in(31 downto 24) & in_mem_data(7 downto 0) & vir_data_in(15 downto 0)	when "10",
+									in_mem_data(7 downto 0) & vir_data_in(23 downto 0)								when "11";
+				vir_wen <= '1';
+				vir_ren <= '0';
+				vir_align_type <= in_mem_align_type;
+			else
+				vir_use_status <= '1';
+				vir_addr <= in_mem_addr;
+				vir_data_in <= in_mem_data;
+				vir_wen <= in_mem_wen;
+				vir_ren <= in_mem_ren;
+				vir_align_type <= in_mem_align_type;
+			end if;
+		end if;
+	end process;
+	
+	-- mmu out
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			out_if_ready <= '0';
+			out_mem_ready <= '0';
+		elsif clk'event and clk = '1' and status = "110" then
+			if (s_mmu_status = IF_USED or s_mmu_status = NORMAL) then
+				out_if_ready <= vir_ready;
+				out_if_inst <= vir_data_out;
+			else 
+				out_mem_ready <= vir_ready;
+				out_mem_data <= vir_data_out;	
+			end if;
+		end if;
+	end process;  
+	
+	-- mmu status change
+	process(rst, clk)
+	begin
+		if rst = '0' then
+			s_mmu_status <= NORMAL;
+		elsif clk'event and clk = '1' and status = "110" then
+			case s_mmu_status is
+			when NORMAL =>
+				if in_mem_ren = '1' and in_mem_wen = '1' then
+					s_mmu_status <= MEM_USED_READ;
+				elsif in_mem_ren = '1' or in_mem_wen = '1' then
+					s_mmu_status <= MEM_USED;
+				else 
+					s_mmu_status <= NORMAL;
+				end if;
+			when MEM_USED =>
+				if vir_ready = '1' then
+					s_mmu_status <= IF_USED;
+				else
+					s_mmu_status <= MEM_USED;
+				end if;
+			when IF_USED =>
+				if vir_ready = '1' then
+					if in_mem_ren = '1' and in_mem_wen = '1' then
+						s_mmu_status <= MEM_USED_READ;
+					if in_mem_ren = '1' or in_mem_wen = '1' then
+						s_mmu_status <= MEM_USED;
+					else
+						s_mmu_status <= NORMAL;
+					end if;
+				else
+					s_mmu_status <= IF_USED;
+				end if;
+			when MEM_USED_READ =>
+				if vir_ready = '1' then
+					s_mmu_status <= MEM_USED_WRITE_BYTE;
+				else
+					s_mmu_status <= MEM_USED_READ;
+				end if;
+			when MEM_USED_WRITE_BYTE =>
+				if vir_ready = '1' then
+					s_mmu_status <= IF_USED;
+				else
+					s_mmu_status <= MEM_USED_WRITE_BYTE;
+				end if;
+			end case;
+		end if;
+	end process;
+	
+	-- with cp0 & jump
+	process(rst, clk)
+	begin
+		if clk'event and clk = '1' and status = "001" then
+			out_clock_init <= s_compare_recover;
+			if s_int_status = NORMAL then
+				if s_mmu_status = NORMAL or s_mmu_status = IF_USED then
+					out_clock_pause <= '0';
+				else
+					out_clock_pause <= '1';
+				end if;
+			else
+				out_clock_pause <= '1';
+			end if;
+			if s_int_status = INT_WB then
+				out_int_start <= s_int_start;
+				out_cause <= s_cause;
+				out_bad_v_addr <= s_bad_v_addr;
+				out_int_code <= s_int_code;
+				out_entry_hi <= s_entry_hi;
+			else
+				out_int_start <= '0';
+			end if;
+			if s_int_status = INT_WB or s_int_status = JUMP_WB then
+				out_epc_en <= s_epc_en;
+				out_epc <= s_epc;
+			else
+				out_epc_en <= '0';
+			end if;
+		end if;
+	end process;
+
+end bhv;

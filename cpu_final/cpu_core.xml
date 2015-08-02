@@ -1,0 +1,42 @@
+<interfaceDefinition version='1.2' language='vhdl' kind='component' name='cpu_core'>
+  <useClause path='work.com_define.all' />
+  <useClause path='ieee.STD_LOGIC_UNSIGNED.all' />
+  <useClause path='ieee.std_logic_arith.all' />
+  <useClause path='ieee.std_logic_1164.all' />
+    <portList>
+
+      <port name='clk' direction='in' type='STD_LOGIC' kind='' />
+      <port name='rst' direction='in' type='STD_LOGIC' kind='' />
+      <port name='baseram_addr' direction='out' type='std_logic_vector (19 downto 0)' kind='array' library='work' package='com_define' packedDimension='(19 downto 0)' />
+      <port name='baseram_data' direction='inout' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='baseram_ce' direction='out' type='STD_LOGIC' kind='' />
+      <port name='baseram_oe' direction='out' type='STD_LOGIC' kind='' />
+      <port name='baseram_we' direction='out' type='STD_LOGIC' kind='' />
+      <port name='extrram_addr' direction='out' type='std_logic_vector (19 downto 0)' kind='array' library='work' package='com_define' packedDimension='(19 downto 0)' />
+      <port name='extrram_data' direction='inout' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='extrram_ce' direction='out' type='STD_LOGIC' kind='' />
+      <port name='extrram_oe' direction='out' type='STD_LOGIC' kind='' />
+      <port name='extrram_we' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_addr' direction='out' type='std_logic_vector (22 downto 0)' kind='array' library='work' package='com_define' packedDimension='(22 downto 0)' />
+      <port name='flash_data' direction='inout' type='std_logic_vector (15 downto 0)' kind='array' library='work' package='com_define' packedDimension='(15 downto 0)' />
+      <port name='flash_control_ce0' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_ce1' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_ce2' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_byte' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_vpen' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_rp' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_oe' direction='out' type='STD_LOGIC' kind='' />
+      <port name='flash_control_we' direction='out' type='STD_LOGIC' kind='' />
+      <port name='serialport_txd' direction='out' type='STD_LOGIC' kind='' />
+      <port name='serialport_rxd' direction='in' type='STD_LOGIC' kind='' />
+      <port name='sim_pc' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='sim_inst' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='sim_rs_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='sim_rt_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='sim_rd_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='sim_rs_value' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='sim_rt_value' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='sim_rd_value' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+
+    </portList>
+</interfaceDefinition>

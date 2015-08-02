@@ -1,0 +1,101 @@
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design cpu_core.ngc ...
+WARNING:NetListWriters:298 - No output is written to cpu_core.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus exc_if_addr[8 : 0] on block cpu_core is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus pc_id[31]_PWR_7_o_div_2_OUT[25 : 1] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/addr[6]_X_20_o_wide_mux_9_OUT[31 :
+   0] on block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_phy/u1/state[4]_GND_85_o_wide_mux_6_OUT[4 : 0] on block cpu_core is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/u1/state[4 : 0] on block cpu_core
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_cp0/rs_addr[4]_s_reg[31][31]_wide_mux_161_OUT[31 : 1] on block cpu_core is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_cp0/s_reg_13[15 : 2] on block cpu_core
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_mmu/physical_addr[24 : 12] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_phy/u3/tickgen/Madd_GND_31_o_BUS_0793_mux_2_OUT_lut[12 : 1] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/u4/tickgen/Madd_n0007_lut[8 : 0]
+   on block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_29_OUT_cy[28 : 26] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_21_OUT_cy[29 : 26] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_63_OUT[31:0]_lut[31 : 4] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_61_OUT[31:0]_lut[31 : 5] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_59_OUT[31:0]_lut[31 : 6] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_57_OUT_lut[31 : 7] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_55_OUT_lut[31 : 8] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_53_OUT_lut[31 : 9] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_51_OUT_lut[31 : 10] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_49_OUT_lut[31 : 11] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_47_OUT_lut[31 : 12] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_45_OUT_lut[31 : 13] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_43_OUT_lut[31 : 14] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_41_OUT_lut[31 : 15] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_39_OUT_lut[31 : 16] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_37_OUT_lut[31 : 17] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_35_OUT_lut[31 : 18] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_33_OUT_lut[31 : 19] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_31_OUT_lut[31 : 20] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   GND_7_o_PWR_7_o_mod_16/Madd_a[31]_GND_9_o_add_17_OUT_Madd_lut[29 : 24] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+  finished :Prep
+Writing EDIF netlist file cpu_core.edif ...
+ngc2edif: Total memory usage is 101672 kilobytes
+

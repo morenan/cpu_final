@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\nancy\Xilinx\workspace\cpu_final\cpu_core\cpu_core.ncd
+OUTFILE=C:\Users\nancy\Xilinx\workspace\cpu_final\cpu_core\cpu_core.bit
+FAMILY=Spartan6
+PART=xc6slx100-3fgg676
+WORKINGDIR=C:\Users\nancy\Xilinx\workspace\cpu_final\cpu_core
+LICENSE=ISE
+USER_INFO=__0_0_0

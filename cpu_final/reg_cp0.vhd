@@ -1,0 +1,153 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use work.com_define.all;
+
+entity reg_cp0 is
+	port(
+		clk, rst, pause : in std_logic;
+		status : in INT3;
+		
+		rs_en : in std_logic ;
+		rd_en : in std_logic ;
+		rs_addr : in REG_ADDR ;
+		rd_addr : in REG_ADDR ;
+		rs_value : out INT32 ;
+		rd_value : in INT32 ;
+		
+		-- clock count
+		clock_int : out std_logic;
+		clock_init : in std_logic;
+		clock_pause : in std_logic;
+			
+		-- exception message 
+		int_start_in : in std_logic;
+		bad_v_addr_in : in INT32;
+		entry_hi_in : in INT20;
+		entry_hi_out : out INT20;
+		cause_in : in INT5;
+		int_code_in : in INT6;
+		int_code_out : out INT6;
+		ebase_out : out INT32;
+		-- eret
+		eret_en : in std_logic ;
+		epc_en : in std_logic;
+		epc_in : in INT32;
+		epc_out : out INT32;
+		
+		-- tlb message
+		tlb_struct_out : out TLB_STRUCT;
+	
+		-- serial_int transform
+		serial_int_in : in std_logic;
+		serial_int_out : out std_logic
+	
+	);
+end reg_cp0 ;
+
+architecture bhv of reg_cp0 is
+
+type CP0_REG_BLOCK is array (31 downto 0) of std_logic_vector(31 downto 0);
+signal s_reg : CP0_REG_BLOCK;
+signal s_clock_int : std_logic;
+signal s_old_compare : INT32;
+
+begin
+	serial_int_out <= serial_int_in and not s_reg(12)(1) and s_reg(12)(0);
+	
+	process(rst, pause, clk)
+	begin
+		if rst = '0' then
+			for i in 0 to 31 loop
+				s_reg(i) <= (others => '0');
+			end loop;
+			--Compare init
+			s_reg(11) <=x"11111111";
+			s_reg(12) <=x"00000000";
+			for i in 13 to 17 loop
+				s_reg(i) <= (others => '0');
+			end loop;	
+			--EBase init
+         	s_reg(15) <= x"80000180";
+         	for i in 19 to 31 loop
+				s_reg(i) <= (others => '0');
+			end loop;
+			s_old_compare <= (others => '0');
+			s_clock_int <= '0';
+		elsif clk'event and clk = '0' and pause = '0' then
+			-- process clock count and interrupt
+			if status = "001" then
+				if clock_init = '1' then
+					s_reg(9) <= (others => '0');
+					s_clock_int <= '0';
+				elsif clock_pause = '0' then
+					if s_reg(11) /= s_old_compare then
+						s_reg(9) <= (others => '0') ;
+					elsif s_clock_int = '0' then
+						s_reg(9) <= s_reg(9) + INT32_ONE;
+					end if;
+					if s_reg(11) /= s_old_compare then
+						s_old_compare <= s_reg(11);
+						s_clock_int <= '0';
+					elsif clock_init = '1' then
+						s_clock_int <= '0';
+					elsif s_reg(11) <= s_reg(9) then
+						s_clock_int <= not s_reg(12)(1) and s_reg(12)(0);
+					end if;
+				else
+					s_clock_int <= '0';
+				end if;
+			end if;
+			-- write value
+			if status(1 downto 0) = "00" and rd_en = '1' then
+				s_reg(conv_integer(rd_addr)) <= rd_value;
+			end if;
+			-- store interrupt message
+			if status = "010" and int_start_in = '1' then
+				s_reg(8) <= bad_v_addr_in;
+				s_reg(10)(31 downto 12) <= entry_hi_in;
+				s_reg(12)(1) <= '1';
+				s_reg(13)(6 downto 2) <= cause_in;
+				s_reg(13)(15 downto 10) <= int_code_in;
+				s_reg(14) <= epc_in;
+			end if;
+			-- eret & output interrupt messsage 
+			if status = "011" then
+				entry_hi_out <= s_reg(10)(31 downto 12);
+				int_code_out <= s_reg(13)(15 downto 10);
+				if eret_en = '1' then
+					s_reg(12)(1) <= '0';
+				end if;
+				if epc_en = '1' then
+					s_reg(14) <= epc_in;
+				end if;
+			end if ;
+		end if ;			
+	end process;
+	
+	process(rst, pause, clk)
+	begin
+		if rst = '0' then
+			rs_value <= (others => '0') ;
+			clock_int <= '0' ;
+			ebase_out <= (others => '0');
+			epc_out <= (others => '0') ;
+			tlb_struct_out <= (others => '0');
+		elsif clk'event and clk = '1' then
+			if status = "101" and rs_en = '1' then
+				rs_value <= s_reg(conv_integer(rs_addr));
+			end if;
+			if status = "100" then
+				clock_int <= s_clock_int;
+				epc_out <= s_reg(14);
+				ebase_out <= s_reg(15);
+				tlb_struct_out <= s_reg(0)(3 downto 0)  & s_reg(10)(31 downto 13)
+								& s_reg(2)(25 downto 6) & s_reg(2)(2 downto 1)
+								& s_reg(3)(25 downto 6) & s_reg(3)(2 downto 1);
+			end if;
+		end if;
+	end process;
+
+end bhv;
+

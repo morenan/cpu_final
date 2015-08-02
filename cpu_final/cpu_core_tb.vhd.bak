@@ -1,0 +1,121 @@
+LIBRARY ieee  ; 
+LIBRARY work  ; 
+USE ieee.std_logic_1164.all  ; 
+USE ieee.std_logic_arith.all  ; 
+USE ieee.STD_LOGIC_UNSIGNED.all  ; 
+USE work.com_define.all  ; 
+ENTITY cpu_core_tb  IS 
+END ; 
+ 
+ARCHITECTURE cpu_core_tb_arch OF cpu_core_tb IS
+  SIGNAL sim_rd_addr   :  std_logic_vector (4 downto 0)  ; 
+  SIGNAL sim_rt_addr   :  std_logic_vector (4 downto 0)  ; 
+  SIGNAL sim_rs_value   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL flash_control_we   :  STD_LOGIC  ; 
+  SIGNAL flash_control_byte   :  STD_LOGIC  ; 
+  SIGNAL rst   :  STD_LOGIC  ; 
+  SIGNAL sim_rd_value   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL sim_rt_value   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL extrram_ce   :  STD_LOGIC  ; 
+  SIGNAL baseram_data   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL flash_control_ce0   :  STD_LOGIC  ; 
+  SIGNAL extrram_addr   :  std_logic_vector (19 downto 0)  ; 
+  SIGNAL sim_inst   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL flash_control_ce1   :  STD_LOGIC  ; 
+  SIGNAL baseram_oe   :  STD_LOGIC  ; 
+  SIGNAL extrram_we   :  STD_LOGIC  ; 
+  SIGNAL sim_rs_addr   :  std_logic_vector (4 downto 0)  ; 
+  SIGNAL flash_control_ce2   :  STD_LOGIC  ; 
+  SIGNAL flash_addr   :  std_logic_vector (22 downto 0)  ; 
+  SIGNAL flash_control_oe   :  STD_LOGIC  ; 
+  SIGNAL serialport_rxd   :  STD_LOGIC  ; 
+  SIGNAL clk   :  STD_LOGIC  ; 
+  SIGNAL baseram_ce   :  STD_LOGIC  ; 
+  SIGNAL sim_pc   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL serialport_txd   :  STD_LOGIC  ; 
+  SIGNAL extrram_data   :  std_logic_vector (31 downto 0)  ; 
+  SIGNAL baseram_addr   :  std_logic_vector (19 downto 0)  ; 
+  SIGNAL flash_control_vpen   :  STD_LOGIC  ; 
+  SIGNAL baseram_we   :  STD_LOGIC  ; 
+  SIGNAL extrram_oe   :  STD_LOGIC  ; 
+  SIGNAL flash_control_rp   :  STD_LOGIC  ; 
+  SIGNAL flash_data   :  std_logic_vector (15 downto 0)  ; 
+  COMPONENT cpu_core  
+    PORT ( 
+      sim_rd_addr  : out std_logic_vector (4 downto 0) ; 
+      sim_rt_addr  : out std_logic_vector (4 downto 0) ; 
+      sim_rs_value  : out std_logic_vector (31 downto 0) ; 
+      flash_control_we  : out STD_LOGIC ; 
+      flash_control_byte  : out STD_LOGIC ; 
+      rst  : in STD_LOGIC ; 
+      sim_rd_value  : out std_logic_vector (31 downto 0) ; 
+      sim_rt_value  : out std_logic_vector (31 downto 0) ; 
+      extrram_ce  : out STD_LOGIC ; 
+      baseram_data  : inout std_logic_vector (31 downto 0) ; 
+      flash_control_ce0  : out STD_LOGIC ; 
+      extrram_addr  : out std_logic_vector (19 downto 0) ; 
+      sim_inst  : out std_logic_vector (31 downto 0) ; 
+      flash_control_ce1  : out STD_LOGIC ; 
+      baseram_oe  : out STD_LOGIC ; 
+      extrram_we  : out STD_LOGIC ; 
+      sim_rs_addr  : out std_logic_vector (4 downto 0) ; 
+      flash_control_ce2  : out STD_LOGIC ; 
+      flash_addr  : out std_logic_vector (22 downto 0) ; 
+      flash_control_oe  : out STD_LOGIC ; 
+      serialport_rxd  : in STD_LOGIC ; 
+      clk  : in STD_LOGIC ; 
+      baseram_ce  : out STD_LOGIC ; 
+      sim_pc  : out std_logic_vector (31 downto 0) ; 
+      serialport_txd  : out STD_LOGIC ; 
+      extrram_data  : inout std_logic_vector (31 downto 0) ; 
+      baseram_addr  : out std_logic_vector (19 downto 0) ; 
+      flash_control_vpen  : out STD_LOGIC ; 
+      baseram_we  : out STD_LOGIC ; 
+      extrram_oe  : out STD_LOGIC ; 
+      flash_control_rp  : out STD_LOGIC ; 
+      flash_data  : inout std_logic_vector (15 downto 0) ); 
+  END COMPONENT ; 
+BEGIN
+  process(clk)
+  begin
+    clk <= not clk after 50ns;
+  end process;
+  
+  rst <= '0',
+        '1' after 100ns;
+  DUT  : cpu_core  
+    PORT MAP ( 
+      sim_rd_addr   => sim_rd_addr  ,
+      sim_rt_addr   => sim_rt_addr  ,
+      sim_rs_value   => sim_rs_value  ,
+      flash_control_we   => flash_control_we  ,
+      flash_control_byte   => flash_control_byte  ,
+      rst   => rst  ,
+      sim_rd_value   => sim_rd_value  ,
+      sim_rt_value   => sim_rt_value  ,
+      extrram_ce   => extrram_ce  ,
+      baseram_data   => baseram_data  ,
+      flash_control_ce0   => flash_control_ce0  ,
+      extrram_addr   => extrram_addr  ,
+      sim_inst   => sim_inst  ,
+      flash_control_ce1   => flash_control_ce1  ,
+      baseram_oe   => baseram_oe  ,
+      extrram_we   => extrram_we  ,
+      sim_rs_addr   => sim_rs_addr  ,
+      flash_control_ce2   => flash_control_ce2  ,
+      flash_addr   => flash_addr  ,
+      flash_control_oe   => flash_control_oe  ,
+      serialport_rxd   => serialport_rxd  ,
+      clk   => clk  ,
+      baseram_ce   => baseram_ce  ,
+      sim_pc   => sim_pc  ,
+      serialport_txd   => serialport_txd  ,
+      extrram_data   => extrram_data  ,
+      baseram_addr   => baseram_addr  ,
+      flash_control_vpen   => flash_control_vpen  ,
+      baseram_we   => baseram_we  ,
+      extrram_oe   => extrram_oe  ,
+      flash_control_rp   => flash_control_rp  ,
+      flash_data   => flash_data   ) ; 
+END ; 
+

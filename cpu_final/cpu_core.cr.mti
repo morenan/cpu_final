@@ -1,0 +1,291 @@
+C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/phy_mem.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package com_define
+-- Loading package rom
+-- Compiling entity phy_mem
+-- Compiling architecture Behavioral of phy_mem
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/Exception.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity Exception
+-- Compiling architecture bhv of Exception
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_final/flow_IF_tb.vhd {2 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_final/flow_IF_tb.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity flow_IF_tb
+-- Compiling architecture flow_IF_tb_arch of flow_IF_tb
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_IF_tb.vhd(57): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_IF_tb.vhd(59): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_IF_tb.vhd(64): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_cp0.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity reg_cp0
+-- Compiling architecture bhv of reg_cp0
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_WB.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Compiling entity flow_WB
+-- Compiling architecture bhv of flow_WB
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/cpu_core.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/cpu_core.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity cpu_core
+-- Compiling architecture bhv of cpu_core
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_EXE.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Compiling entity flow_EXE
+-- Compiling architecture bhv of flow_EXE
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/com_define.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package com_define
+-- Compiling package body com_define
+-- Loading package com_define
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/alu.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package NUMERIC_STD
+-- Loading package com_define
+-- Compiling entity alu
+-- Compiling architecture bhv of alu
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/IDecode_const.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package IDecode_const
+-- Compiling package body IDecode_const
+-- Loading package IDecode_const
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_ID.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Loading package IDecode_const
+-- Compiling entity flow_ID
+-- Compiling architecture bhv of flow_ID
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/reg_com.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Compiling entity reg_com
+-- Compiling architecture bhv of reg_com
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_MEM.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Compiling entity flow_MEM
+-- Compiling architecture bhv of flow_MEM
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/rom.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package rom
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flash.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity flash
+-- Compiling architecture Behavioral of flash
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/flow_IF.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Compiling entity flow_IF
+-- Compiling architecture bhv of flow_IF
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/mmu.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package NUMERIC_STD
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity mmu
+-- Compiling architecture bhv of mmu
+
+} {} {}} flow_id_tb.vhd {2 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_final/flow_id_tb.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Loading package com_define
+-- Loading package IDecode_const
+-- Compiling entity flow_id_tb
+-- Compiling architecture flow_id_tb_arch of flow_id_tb
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_id_tb.vhd(212): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_id_tb.vhd(214): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_id_tb.vhd(219): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [2] C:/Users/nancy/Xilinx/workspace/cpu_final/flow_id_tb.vhd(275): (vcom-1090) Possible infinite loop: Process contains no WAIT statement.
+
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd {1 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/ram.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ram
+-- Compiling architecture Behavioral of ram
+
+} {} {}} C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v {1 {vlog -work work -vopt C:/Users/nancy/Xilinx/workspace/cpu_sim/remote_sources/_/async.v
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module async_transmitter
+-- Compiling module async_receiver
+-- Compiling module BaudTickGen
+
+Top level modules:
+	async_transmitter
+	async_receiver
+
+} {} {}} cpu_core_tb.vhd {0 {vcom -work work -2002 -explicit -vopt C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd
+Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package com_define
+-- Compiling entity flow_IF_tb
+-- Compiling architecture flow_IF_tb_arch of flow_IF_tb
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(50): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(50): Expression is not a signal.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(52): Illegal target for signal assignment.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(52): (vcom-1136) Unknown identifier "clk".
+
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(52): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(52): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(55): (vcom-1136) Unknown identifier "rst".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(55): Expression is not a signal.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(57): Illegal target for signal assignment.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(57): (vcom-1136) Unknown identifier "rst".
+
+** Warning: [4] C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(58): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(58): Enumeration literal '1' is not of type (error).
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(62): (vcom-1136) Unknown identifier "rst".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(62): Expression is not a signal.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(62): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(62): Expression is not a signal.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(64): (vcom-1136) Unknown identifier "rst".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(64): Type error resolving infix expression "=" as type std.STANDARD.BOOLEAN.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(65): Illegal target for signal assignment.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(65): (vcom-1136) Unknown identifier "status".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(66): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(66): Attribute "event" requires a static signal prefix.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(66): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(66): Bad expression in right operand of infix expression "and".
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(66): Type error resolving infix expression "and" as type std.STANDARD.BOOLEAN.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(67): Illegal target for signal assignment.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(67): (vcom-1136) Unknown identifier "status".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(67): (vcom-1136) Unknown identifier "status".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(71): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(71): Expression is not a signal.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(73): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(73): Attribute "event" requires a static signal prefix.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(73): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(73): Bad expression in right operand of infix expression "and".
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(73): Type error resolving infix expression "and" as type std.STANDARD.BOOLEAN.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(74): (vcom-1136) Unknown identifier "status".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(75): near "end": syntax error
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(94): Illegal sequential statement.
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(79): (vcom-1136) Unknown identifier "clk".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(79): (vcom-1136) Unknown identifier "rst".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(80): (vcom-1136) Unknown identifier "status".
+
+** Error: C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core_tb.vhd(95): near ";": expecting IF
+
+} {11.0 12.0 13.0 16.0 18.0 19.0 20.0 21.0 22.0 25.0 27.0 29.0 30.0 32.0 33.0 35.0 36.0 39.0 40.0 41.0 42.0 44.0 45.0 49.0 50.0 51.0 52.0 53.0 54.0 56.0 57.0 59.0 60.0 63.0 64.0 67.0 68.0 69.0 70.0 71.0 72.0 73.0} {}}

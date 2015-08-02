@@ -1,0 +1,157 @@
+library IEEE; 
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_SIGNED.ALL;
+use work.com_define.ALL;
+
+entity flow_MEM is
+	port(
+		clk, rst, pause, clear : in std_logic;
+		status : in INT3;
+		
+		pc_to_exc : out INT32;
+		
+		in_pc : in INT32 ;
+		in_rs_en,   in_rd_en   : in std_logic ;
+		in_rs_addr, in_rd_addr : in REG_ADDR ;
+		in_rs_type, in_rd_type : in std_logic ;
+		in_rs_value, in_alu_value, in_lo_value, in_hi_value : in INT32 ;
+		in_mem_wen : in std_logic;
+		in_mem_ren : in std_logic;
+		in_mem_sel : in MEM_OP;
+		in_tlb_en : in std_logic;
+		in_alien_type : in ALIEN_TYPE;
+		in_wb_sel : in WB_SELECT;
+		-- to WB
+		in_lo_en, in_hi_en : in std_logic ;
+		
+		out_pc : out INT32 ;
+		out_rd_en, out_lo_en, out_hi_en : out std_logic ;
+		out_rd_value, out_lo_value, out_hi_value : out INT32 ;
+		out_rd_addr : out REG_ADDR ;
+		out_rd_type : out std_logic ;
+	
+		-- with mmu
+		mmu_wen, mmu_ren : out std_logic ;
+		mmu_addr : out INT32 ;
+		mmu_data_in : out INT32 ;
+		mmu_data_out : in INT32 ;
+		mmu_alien_type : out ALIEN_TYPE ;
+		mmu_ready : in INT32 ;
+		mmu_tlb_en : out std_logic;
+	
+		-- data sideway
+		nex_rd_en : out std_logic;
+		nex_rd_addr : out REG_ADDR;
+		nex_rd_type : out std_logic;
+		nex_rd_value : out INT32
+     		
+		);
+end flow_EXE;
+
+architecture bhv of flow_EXE is
+
+signal s_pc : INT32 ;
+signal s_rs_en, s_rd_en : std_logic ;
+signal s_rs_addr, s_rd_addr : REG_ADDR ;
+signal s_rs_type, s_rd_type : std_logic ;
+signal s_mem_sel : MEM_SELECT ;
+signal s_wb_sel : WB_SELECT ;
+signal s_lo_en, s_hi_en : std_logic ;
+signal s_rs_value, s_rd_value, s_lo_value, s_hi_value : INT32;
+signal s_pause : std_logic ;
+
+-- signals with mmu
+signal s_mmu_data_in : INT32 ;
+signal s_mmu_data_out : INT32 ;
+
+
+begin
+	
+	pc_to_exc <= s_pc;
+
+	mmu_wen <= in_mem_wen;
+	mmu_ren <= in_mem_ren;
+	mmu_addr <= in_alu_value;
+	mmu_data_in <= in_rs_value 					 	 when in_mem_sel = MEM_SELECT_FROM_RS
+			  else x"000000"&in_rs_value(7 downto 0) when in_mem_sel = MEM_SELECT_FROM_RS_BYTE
+			  else x"00000000";
+	mmu_alien_type <= in_alien_type;
+	mmu_tlb_en <= in_tlb_en;
+	
+	nex_rd_en <= in_rd_en;
+	nex_rd_addr <= in_rd_addr;
+	nex_rd_type <= in_rd_type;
+	nex_rd_value <= in_rs_value  when s_wb_sel = WB_SELECT_FROM_RS
+			  else  in_alu_value when s_wb_sel = WB_SELECT_FROM_ALU
+			  else  in_pc + 4    when s_wb_sel = WB_SELECT_FROM_RPC
+			  else  s_rd_value;
+	out_rd_value <= s_rd_value;
+	
+	process(rst, clk, pause, clear)
+	begin
+		if rst = '0' then
+			s_pc <= (others => '0') ;
+			s_rs_en <= '0' ;
+			s_rd_en <= '0' ;
+			s_lo_en <= '0' ;
+			s_hi_en <= '0' ;
+		elsif clk'event and clk = '1' then
+			if clear = '1' then
+				s_pc <= (others => '0') ;
+				s_rs_en <= '0' ;
+				s_rd_en <= '0' ;
+				s_lo_en <= '0' ;
+				s_hi_en <= '0' ;
+			elsif status = "000" and pause = '0' then
+				s_pc <= in_pc ;
+				s_rs_en <= in_rs_en ;
+				s_rd_en <= in_rd_en ;
+				s_lo_en <= in_lo_en ;
+				s_hi_en <= in_hi_en ;
+				s_rs_type <= in_rs_type ;
+				s_rd_type <= in_rd_type ;
+				s_rs_addr <= in_rs_addr ;
+				s_rd_addr <= in_rd_addr ;
+				s_rs_value <= in_rs_value ;
+				s_alu_value <= in_alu_value ;
+				s_lo_value <= in_lo_value ;
+				s_hi_value <= in_hi_value ;
+				s_alien_type <= in_alien_type ;
+				s_wb_sel <= in_wb_sel ;
+			end if;
+		end if;
+	end process ;
+	
+	process(rst, clk, pause, clear)
+	begin
+		if rst = '0' then
+			out_pc <= (others => '0') ;
+			out_rs_en <= '0' ;
+			out_rd_en <= '0' ;
+			out_mem_wen <= '0' ;
+			out_mem_ren <= '0' ;
+			out_tlb_en <= '0' ;
+			out_eret_en <= '0' ;
+			out_lo_en <= '0' ;
+			out_hi_en <= '0' ;
+		elsif clk'event and clk = '1' and status = "111" then
+			out_pc <= s_pc ;
+			out_rd_en <= s_rd_en ;
+			out_lo_en <= s_lo_en ;
+			out_hi_en <= s_hi_en ;
+			out_rd_addr <= s_rd_addr; 
+			out_rd_type <= s_rd_type;
+			out_lo_value <= s_lo_value;
+			out_hi_value <= s_hi_value;
+			s_rd_value <=   s_rs_value   when s_wb_sel = WB_SELECT_FROM_RS
+					  else  s_alu_value  when s_wb_sel = WB_SELECT_FROM_ALU
+					  else  s_pc + 4     when s_wb_sel = WB_SELECT_FROM_RPC
+					  else  mmu_data_out when s_wb_sel = WB_SELECT_FROM_MEM
+					  else  x"000000"&mmu_data_out(7 downto 0) when s_wb_sel = WB_SELECT_FROM_MEMBYTE_SIGN_EXTEND and s_mmu_data_out(7) = '0'
+					  else  x"ffffff"&mmu_data_out(7 downto 0) when s_wb_sel = WB_SELECT_FROM_MEMBYTE_SIGN_EXTEND and s_mmu_data_out(7) = '1'
+					  else  x"000000"&mmu_data_out(7 downto 0) when s_wb_sel = WB_SELECT_FROM_MEMBYTE_ZERO_EXTEND
+				      else  x"0000"&mmu_data_out(15 downto 0)  when s_wb_sel = WB_SELECT_FROM_MEMINT16_ZERO_EXTEND
+					  else  x"00000000";
+		end if;
+	end process;
+end bhv ;

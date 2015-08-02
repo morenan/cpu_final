@@ -1,0 +1,73 @@
+<interfaceDefinition version='1.2' language='vhdl' kind='component' name='flow_ID'>
+  <useClause path='work.IDecode_const.all' />
+  <useClause path='work.com_define.all' />
+  <useClause path='ieee.STD_LOGIC_SIGNED.all' />
+  <useClause path='ieee.std_logic_1164.all' />
+    <portList>
+
+      <port name='clk' direction='in' type='STD_LOGIC' kind='' />
+      <port name='rst' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pause' direction='in' type='STD_LOGIC' kind='' />
+      <port name='clear' direction='in' type='STD_LOGIC' kind='' />
+      <port name='status' direction='in' type='std_logic_vector (2 downto 0)' kind='array' library='work' package='com_define' packedDimension='(2 downto 0)' />
+      <port name='pc_to_exc' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='in_inst' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='in_pc' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_pc' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_rs_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rt_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rd_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rs_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='out_rt_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='out_rd_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='out_rs_type' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rt_type' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rd_type' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_rs_value' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_rt_value' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_alu_op' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='com_define' packedDimension='(3 downto 0)' />
+      <port name='out_alu_selA' direction='out' type='std_logic_vector (2 downto 0)' kind='array' library='work' package='com_define' packedDimension='(2 downto 0)' />
+      <port name='out_alu_selB' direction='out' type='std_logic_vector (2 downto 0)' kind='array' library='work' package='com_define' packedDimension='(2 downto 0)' />
+      <port name='out_imme_sign_extend' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_imme_zero_extend' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_mem_wen' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_mem_ren' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_mem_sel' direction='out' type='std_logic_vector (1 downto 0)' kind='array' library='work' package='com_define' packedDimension='(1 downto 0)' />
+      <port name='out_tlb_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_align_type' direction='out' type='std_logic_vector (1 downto 0)' kind='array' library='work' package='com_define' packedDimension='(1 downto 0)' />
+      <port name='out_wb_sel' direction='out' type='std_logic_vector (2 downto 0)' kind='array' library='work' package='com_define' packedDimension='(2 downto 0)' />
+      <port name='out_lo_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_hi_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_branch_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_branch_pc' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_branch_wait' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_jump_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_jump_pc' direction='out' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='out_eret_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_epc_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='out_exc_code' direction='out' type='std_logic_vector (1 downto 0)' kind='array' library='work' package='com_define' packedDimension='(1 downto 0)' />
+      <port name='reg_rs_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='reg_rt_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='reg_rs_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='reg_rt_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='reg_rs_value' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='reg_rt_value' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='cp0_rs_en' direction='out' type='STD_LOGIC' kind='' />
+      <port name='cp0_rs_addr' direction='out' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='cp0_rs_value' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='pre_rd_en1' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_en2' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_en3' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_addr1' direction='in' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='pre_rd_addr2' direction='in' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='pre_rd_addr3' direction='in' type='std_logic_vector (4 downto 0)' kind='array' library='work' package='com_define' packedDimension='(4 downto 0)' />
+      <port name='pre_rd_type1' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_type2' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_type3' direction='in' type='STD_LOGIC' kind='' />
+      <port name='pre_rd_value1' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='pre_rd_value2' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='pre_rd_value3' direction='in' type='std_logic_vector (31 downto 0)' kind='array' library='work' package='com_define' packedDimension='(31 downto 0)' />
+      <port name='pre_rd_value_en1' direction='in' type='STD_LOGIC' kind='' />
+
+    </portList>
+</interfaceDefinition>

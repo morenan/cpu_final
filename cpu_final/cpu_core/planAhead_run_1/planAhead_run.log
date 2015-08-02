@@ -1,0 +1,154 @@
+
+****** PlanAhead v14.7 (64-bit)
+  **** Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+    ** Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+Failed to create the shortcut directory: 'C:\Users\nancy\AppData\Roaming/Xilinx/PlanAhead\14.7\shortcuts'
+Failed to create the commands directory: 'C:\Users\nancy\AppData\Roaming/Xilinx/PlanAhead\14.7\commands'
+source C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core/pa.fromNetlist.tcl
+# create_project -name cpu_core -dir "C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core/planAhead_run_3" -part xc6slx100fgg676-3
+create_project: Time (s): elapsed = 00:00:07 . Memory (MB): peak = 284.797 ; gain = 22.168
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core/cpu_core.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core} }
+# set_property target_constrs_file "C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf" [current_fileset -constrset]
+Adding file 'C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf' to fileset 'constrs_1'
+# add_files [list {C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc6slx100fgg676-3
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design cpu_core.ngc ...
+WARNING:NetListWriters:298 - No output is written to cpu_core.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus exc_if_addr[8 : 0] on block cpu_core is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus pc_id[31]_PWR_7_o_div_2_OUT[25 : 1] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/addr[6]_X_20_o_wide_mux_9_OUT[31 :
+   0] on block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_phy/u1/state[4]_GND_85_o_wide_mux_6_OUT[4 : 0] on block cpu_core is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/u1/state[4 : 0] on block cpu_core
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_cp0/rs_addr[4]_s_reg[31][31]_wide_mux_161_OUT[31 : 1] on block cpu_core is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_cp0/s_reg_13[15 : 2] on block cpu_core
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_mmu/physical_addr[24 : 12] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   u_phy/u3/tickgen/Madd_GND_31_o_BUS_0793_mux_2_OUT_lut[12 : 1] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus u_phy/u4/tickgen/Madd_n0007_lut[8 : 0]
+   on block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_29_OUT_cy[28 : 26] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_21_OUT_cy[29 : 26] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_63_OUT[31:0]_lut[31 : 4] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_61_OUT[31:0]_lut[31 : 5] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_59_OUT[31:0]_lut[31 : 6] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_57_OUT_lut[31 : 7] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_55_OUT_lut[31 : 8] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_53_OUT_lut[31 : 9] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_51_OUT_lut[31 : 10] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_49_OUT_lut[31 : 11] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_47_OUT_lut[31 : 12] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_45_OUT_lut[31 : 13] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_43_OUT_lut[31 : 14] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_41_OUT_lut[31 : 15] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_39_OUT_lut[31 : 16] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_37_OUT_lut[31 : 17] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_35_OUT_lut[31 : 18] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_33_OUT_lut[31 : 19] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   pc_id[31]_PWR_7_o_div_2/Madd_a[31]_GND_8_o_add_31_OUT_lut[31 : 20] on block
+   cpu_core is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   GND_7_o_PWR_7_o_mod_16/Madd_a[31]_GND_9_o_add_17_OUT_Madd_lut[29 : 24] on
+   block cpu_core is not reconstructed, because there are some missing bus
+   signals.
+  finished :Prep
+Writing EDIF netlist file cpu_core.edif ...
+ngc2edif: Total memory usage is 101672 kilobytes
+
+Parsing EDIF File [./planAhead_run_3/cpu_core.data/cache/cpu_core_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_3/cpu_core.data/cache/cpu_core_ngc_zx.edif]
+INFO: [Netlist 29-17] Analyzing 81 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-43] Netlist 'cpu_core' is not ideal for floorplanning, since the cellview 'cpu_core' defined in file 'cpu_core.ngc' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+Loading clock regions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx100/ClockRegion.xml
+Loading clock buffers from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx100/ClockBuffers.xml
+Loading package pin functions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/PinFunctions.xml...
+Loading package from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx100/fgg676/Package.xml
+Loading io standards from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan6/IOStandards.xml
+Loading device configuration modes from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/ConfigModes.xml
+Loading list of drcs for the architecture : C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan6/drc.xml
+Parsing UCF File [C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf]
+CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'clk' [C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf:2]
+Finished Parsing UCF File [C:/Users/nancy/Xilinx/workspace/cpu_final/cpu_core.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 81 instances were transformed.
+  BUFGP => BUFGP (IBUF, BUFG): 1 instances
+  IOBUF => IOBUF (OBUFT, IBUF): 80 instances
+
+Phase 0 | Netlist Checksum: d1e8e369
+link_design: Time (s): elapsed = 00:00:32 . Memory (MB): peak = 531.551 ; gain = 241.270
+exit
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Fri Jul 31 16:31:53 2015...
+INFO: [Common 17-83] Releasing license: PlanAhead
